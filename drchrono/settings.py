@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=*l&a&rk7jmiw$3euke*z9lu-na!^j^i&ddejfik!ajqlaymmc'
+SECRET_KEY = 'fejjegW0rUu2CJE12IeB5JGf7BDu6YhoVTdSvCHmyJX2JngJvRRB5xwJVhWmDQ7cxQ2JlNw7TeyLbpTLSigpm0vjp6WAQpFNlzsUJtZULxzrkpcm0BB3Z9dDly2zOfTZ'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,12 +39,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'drchrono',
     'social.apps.django_app.default',
+
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -66,6 +67,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.csrf',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -104,8 +106,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#CSRF_FAILURE_VIEW = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SOCIAL_AUTH_DRCHRONO_KEY = 'aYo2IuYPUcCOOLJ19iOT7GgZIB37ngJvKhhwoUJX'
+SOCIAL_AUTH_DRCHRONO_SECRET='mNbsRSYkwP1rlxVAwPrd6rjG2R4n5sOikhegWxsxXJmehtem6ui3wGVEeRn8AaQJzdnWVYbJXCMY71El0SaYujgM8NU9cRRafaRo1Cbad3kdxXMkdEA0yW3Lk7k9X1Yt'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/login/'
+LOGIN_REDIRECT_URL2 = 'http://127.0.0.0:8000/kiosk/login/'
+ACCESS_TOKEN = None
+REFRESH_TOKEN = None
+oauth_code = None
+EXPIRES_IN = None

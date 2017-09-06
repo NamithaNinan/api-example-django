@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+{% load filters %}
+<body>
+    
+    {% include 'nav.html' %}
+<section id = "landing">
+    <div class="container"><br><br>
+    <h2> Today's Appointments </h2>
+    <div class="clearfix">&nbsp;</div>
+      <div class="patienti-info">
+      {% for thing in doctors_data %}
+      <div class = "row">
+      
+      <div class ="col-xs-6 col-sm-4 col-md-6">
+          {% if thing.1.0 == "Cancelled" %}
+          <button type="button" class="btn btn-danger btn-lg btn-block" id="buttons"><small>Name: {{thing.2.0}} {{thing.2.1}}</small><br><small>Gender: {{thing.2.2}}</small><br><small>Status: {{thing.1.0}}</small><br><small>Scheduled Time: {{thing.1.1}}</small><br><small>Duration: {{thing.1.2}}</small></button>
+          {% elif thing.1.0 == "Arrived" %}
+            <button type="button" class="btn btn-success btn-lg btn-block" id="buttons"><small>Name: {{thing.2.0}} {{thing.2.1}}</small><br><small>Gender: {{thing.2.2}}</small><br><small>Status: {{thing.1.0}}</small><br><small>Scheduled Time: {{thing.1.1}}</small><br><small>Duration: {{thing.1.2}}</small></button>
+          {% elif thing.1.0 == "In Session" %}
+            <button type="button" class="btn btn-info btn-lg btn-block" id="buttons"><small>Name: {{thing.2.0}} {{thing.2.1}}</small><br><small>Gender: {{thing.2.2}}</small><br><small>Status: {{thing.1.0}}</small><br><small>Scheduled Time: {{thing.1.1}}</small><br><small>Duration: {{thing.1.2}}</small></button>
+            {% else %}
+<!--          <a href= "http://127.0.0.1:8000/login/patient/{{thing.2.0}}">--><button type="button" class="btn btn-primary btn-lg btn-block" id="buttons"><small>Name: {{thing.2.0}} {{thing.2.1}}</small><br><small>Gender: {{thing.2.2}}</small><br><small>Status: {{thing.1.0}}</small><br><small>Scheduled Time: {{thing.1.1}}</small><br><small>Duration: {{thing.1.2}}</small></button>
+          {% endif %}
+    </div>
+   <!-- Reminder close-->
+  </div><div class="clearfix">&nbsp;</div>
+{% endfor %}</div>
+<div class="clearfix">&nbsp;</div>
+
+
+</div>
+
+
+    </section>
+
+</body>
+</html>
